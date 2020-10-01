@@ -14,6 +14,10 @@ public class PromotionComputeEngine {
 
 		if (CollectionUtils.isEmpty(cartItems))
 			return 0;
+		
+		for(CartItem cartItem : cartItems) {
+			total+= cartItem.getQuantity() * cartItem.getItem().getPrice();
+		}
 
 		return total;
 	}
