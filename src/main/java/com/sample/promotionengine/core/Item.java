@@ -2,7 +2,7 @@ package com.sample.promotionengine.core;
 
 public enum Item {
 
-	A(50), B(30), C(20), D(10);
+	A(50), B(30), C(20), D(15);
 
 	private int price;
 
