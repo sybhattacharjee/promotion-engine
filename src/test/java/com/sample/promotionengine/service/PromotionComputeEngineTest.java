@@ -202,4 +202,47 @@ public class PromotionComputeEngineTest {
 				ListUtils.unmodifiableList(promotions)), 0);
 	}
 
+	@Test
+	public void test05_compute() {
+
+		log.info("TC05 - Test case with cart items and combined promotion list");
+
+		// Promotion for Item A
+		Map<Item, Integer> itemCombinations1 = new HashMap<>(1);
+		itemCombinations1.put(Item.A, 3);
+		Promotion promotion1 = new Promotion(itemCombinations1, 130);
+
+		// Promotion for Item B
+		Map<Item, Integer> itemCombinations2 = new HashMap<>(1);
+		itemCombinations2.put(Item.B, 2);
+		Promotion promotion2 = new Promotion(itemCombinations2, 45);
+
+		// Combined Promotion for Item C & D
+		Map<Item, Integer> itemCombinations3 = new HashMap<>(2);
+		itemCombinations3.put(Item.C, 2);
+		itemCombinations3.put(Item.D, 3);
+		Promotion promotion3 = new Promotion(itemCombinations3, 60);
+
+		// Promotion list
+		promotions = new ArrayList<>(3);
+		promotions.add(promotion1);
+		promotions.add(promotion2);
+		promotions.add(promotion3);
+
+		CartItem cartItem1 = new CartItem(Item.A, 3);
+		CartItem cartItem2 = new CartItem(Item.B, 5);
+		CartItem cartItem3 = new CartItem(Item.C, 5);
+		CartItem cartItem4 = new CartItem(Item.D, 5);
+
+		List<CartItem> cartItems = new ArrayList<CartItem>(4);
+		cartItems.add(cartItem1);
+		cartItems.add(cartItem2);
+		cartItems.add(cartItem3);
+		cartItems.add(cartItem4);
+
+		assertEquals(410,
+				promotionComputeEngine.compute(new ArrayList<>(cartItems), ListUtils.unmodifiableList(promotions)), 0);
+
+	}
+
 }
