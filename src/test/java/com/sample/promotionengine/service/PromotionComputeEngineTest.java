@@ -8,6 +8,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.commons.collections4.ListUtils;
 import org.junit.Before;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
@@ -40,7 +41,7 @@ public class PromotionComputeEngineTest {
 		itemCombinations2.put(Item.B, 2);
 		Promotion promotion2 = new Promotion(itemCombinations2, 45);
 
-		// Promotion for Item C & D
+		// Combined Promotion for Item C & D
 		Map<Item, Integer> itemCombinations3 = new HashMap<>(2);
 		itemCombinations3.put(Item.C, 1);
 		itemCombinations3.put(Item.D, 1);
@@ -106,52 +107,61 @@ public class PromotionComputeEngineTest {
 		log.info("TC01 - Test case with empty cart items");
 
 		List<CartItem> cartItems = Collections.emptyList();
-		assertEquals(0, promotionComputeEngine.compute(cartItems, null), 0);
+		assertEquals(0, promotionComputeEngine.compute(new ArrayList<>(cartItems), null), 0);
 	}
 
 	@Test
 	public void test02_compute() {
 
 		log.info("TC02 - Test cases with cart items and no promotion");
-		
+
 		log.info("TC02 - Executing test case for Scenario 1");
-		assertEquals(100, promotionComputeEngine.compute(this.cartItemsForScenario1(), null), 0);
-		
+		assertEquals(100, promotionComputeEngine.compute(new ArrayList<>(this.cartItemsForScenario1()), null), 0);
+
 		log.info("TC02 - Executing test case for Scenario 2");
-		assertEquals(420, promotionComputeEngine.compute(this.cartItemsForScenario2(), null), 0);
-		
+		assertEquals(420, promotionComputeEngine.compute(new ArrayList<>(this.cartItemsForScenario2()), null), 0);
+
 		log.info("TC02 - Executing test case for Scenario 3");
-		assertEquals(335, promotionComputeEngine.compute(this.cartItemsForScenario3(), null), 0);
+		assertEquals(335, promotionComputeEngine.compute(new ArrayList<>(this.cartItemsForScenario3()), null), 0);
 	}
 
 	@Test
 	public void test03_compute() {
 
 		log.info("TC03 - Test cases with cart items and empty promotion list");
-		
+
 		log.info("TC03 - Executing test case for Scenario 1");
-		assertEquals(100, promotionComputeEngine.compute(this.cartItemsForScenario1(), Collections.emptyList()), 0);
-		
+		assertEquals(100,
+				promotionComputeEngine.compute(new ArrayList<>(this.cartItemsForScenario1()), Collections.emptyList()),
+				0);
+
 		log.info("TC03 - Executing test case for Scenario 2");
-		assertEquals(420, promotionComputeEngine.compute(this.cartItemsForScenario2(), Collections.emptyList()), 0);
-		
+		assertEquals(420,
+				promotionComputeEngine.compute(new ArrayList<>(this.cartItemsForScenario2()), Collections.emptyList()),
+				0);
+
 		log.info("TC03 - Executing test case for Scenario 3");
-		assertEquals(335, promotionComputeEngine.compute(this.cartItemsForScenario3(), Collections.emptyList()), 0);
+		assertEquals(335,
+				promotionComputeEngine.compute(new ArrayList<>(this.cartItemsForScenario3()), Collections.emptyList()),
+				0);
 	}
 
 	@Test
 	public void test04_compute() {
 
 		log.info("TC04 - Test case with cart items and promotion list");
-		
+
 		log.info("TC04 - Executing test case for Scenario 1");
-		assertEquals(100, promotionComputeEngine.compute(this.cartItemsForScenario1(), promotions), 0);
-		
+		assertEquals(100, promotionComputeEngine.compute(new ArrayList<>(this.cartItemsForScenario1()),
+				ListUtils.unmodifiableList(promotions)), 0);
+
 		log.info("TC04 - Executing test case for Scenario 2");
-		assertEquals(370, promotionComputeEngine.compute(this.cartItemsForScenario2(), promotions), 0);
-		
+		assertEquals(370, promotionComputeEngine.compute(new ArrayList<>(this.cartItemsForScenario2()),
+				ListUtils.unmodifiableList(promotions)), 0);
+
 		log.info("TC04 - Executing test case for Scenario 3");
-		assertEquals(280, promotionComputeEngine.compute(this.cartItemsForScenario3(), promotions), 0);
+		assertEquals(280, promotionComputeEngine.compute(new ArrayList<>(this.cartItemsForScenario3()),
+				ListUtils.unmodifiableList(promotions)), 0);
 	}
 
 }
