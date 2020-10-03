@@ -14,9 +14,24 @@ import com.sample.promotionengine.core.Promotion;
 
 import lombok.extern.slf4j.Slf4j;
 
+/**
+* This class test the the total value of the cart based on various promotions.
+* 
+*
+* @author  Sayan Bhattacharjee
+* @version 1.0.
+* @since   2020-10-03
+*/
 @Slf4j
 public class PromotionComputeEngine {
 
+	/**
+	 * Compute.
+	 *
+	 * @param cartItems  the cart items
+	 * @param promotions the promotions
+	 * @return the float
+	 */
 	public float compute(List<CartItem> cartItems, List<Promotion> promotions) {
 
 		float total = 0;
@@ -37,6 +52,13 @@ public class PromotionComputeEngine {
 		return total;
 	}
 
+	/**
+	 * Compute with promotion.
+	 *
+	 * @param cartItems  the cart items
+	 * @param promotions the promotions
+	 * @return the float
+	 */
 	private float computeWithPromotion(List<CartItem> cartItems, List<Promotion> promotions) {
 		float total = 0;
 		for (Promotion promotion : promotions) {
@@ -56,6 +78,14 @@ public class PromotionComputeEngine {
 		return total;
 	}
 
+	/**
+	 * Compute items with combined promotion.
+	 *
+	 * @param cartItems the cart items
+	 * @param total     the total
+	 * @param promotion the promotion
+	 * @return the float
+	 */
 	private float computeItemsWithCombinedPromotion(List<CartItem> cartItems, float total, Promotion promotion) {
 		float promotionalPrice = promotion.getPromotionalPrice();
 		Map<CartItem, Integer> cartItemsForCombinedPromotion = new HashMap<>();
@@ -87,6 +117,14 @@ public class PromotionComputeEngine {
 		return total;
 	}
 
+	/**
+	 * Compute items with single promotion.
+	 *
+	 * @param cartItems the cart items
+	 * @param total     the total
+	 * @param promotion the promotion
+	 * @return the float
+	 */
 	private float computeItemsWithSinglePromotion(List<CartItem> cartItems, float total, Promotion promotion) {
 		for (CartItem cartItem : cartItems) {
 			Integer promotionalQuantityForItem = promotion.getItemCombination().get(cartItem.getItem());
@@ -103,6 +141,13 @@ public class PromotionComputeEngine {
 		return total;
 	}
 
+	/**
+	 * Compute items without promotion.
+	 *
+	 * @param cartItems the cart items
+	 * @param total     the total
+	 * @return the float
+	 */
 	private float computeItemsWithoutPromotion(List<CartItem> cartItems, final float total) {
 		float subtotal = 0;
 		for (CartItem cartItem : cartItems) {

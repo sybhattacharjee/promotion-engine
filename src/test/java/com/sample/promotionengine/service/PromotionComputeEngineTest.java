@@ -20,13 +20,27 @@ import com.sample.promotionengine.core.Promotion;
 
 import lombok.extern.slf4j.Slf4j;
 
+/**
+* This is a test class used to test the PromotionComputationEngine class.
+* 
+*
+* @author  Sayan Bhattacharjee
+* @version 1.0.
+* @since   2020-10-03
+*/
 @Slf4j
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class PromotionComputeEngineTest {
 
+	/** The promotion compute engine. */
 	private PromotionComputeEngine promotionComputeEngine;
+
+	/** The promotions. */
 	List<Promotion> promotions = null;
 
+	/**
+	 * Initializes the attributes before a test case execution.
+	 */
 	@Before
 	public void init() {
 		promotionComputeEngine = new PromotionComputeEngine();
@@ -54,7 +68,11 @@ public class PromotionComputeEngineTest {
 		promotions.add(promotion3);
 	}
 
-	// Cart items - Scenario 1
+	/**
+	 * Cart items for scenario 1.
+	 *
+	 * @return the list
+	 */
 	private List<CartItem> cartItemsForScenario1() {
 
 		CartItem cartItem1 = new CartItem(Item.A, 1);
@@ -69,7 +87,11 @@ public class PromotionComputeEngineTest {
 
 	}
 
-	// Cart items - Scenario 2
+	/**
+	 * Cart items for scenario 2.
+	 *
+	 * @return the list
+	 */
 	private List<CartItem> cartItemsForScenario2() {
 
 		CartItem cartItem1 = new CartItem(Item.A, 5);
@@ -84,7 +106,11 @@ public class PromotionComputeEngineTest {
 
 	}
 
-	// Cart items - Scenario 3
+	/**
+	 * Cart items for scenario 3.
+	 *
+	 * @return the list
+	 */
 	private List<CartItem> cartItemsForScenario3() {
 
 		CartItem cartItem1 = new CartItem(Item.A, 3);
@@ -101,6 +127,9 @@ public class PromotionComputeEngineTest {
 
 	}
 
+	/**
+	 * Test 01 compute with no items in cart.
+	 */
 	@Test
 	public void test01_compute() {
 
@@ -110,6 +139,9 @@ public class PromotionComputeEngineTest {
 		assertEquals(0, promotionComputeEngine.compute(new ArrayList<>(cartItems), null), 0);
 	}
 
+	/**
+	 * Test 02 compute with no promotion.
+	 */
 	@Test
 	public void test02_compute() {
 
@@ -125,6 +157,9 @@ public class PromotionComputeEngineTest {
 		assertEquals(335, promotionComputeEngine.compute(new ArrayList<>(this.cartItemsForScenario3()), null), 0);
 	}
 
+	/**
+	 * Test 03 compute with empty promotion list.
+	 */
 	@Test
 	public void test03_compute() {
 
@@ -146,6 +181,9 @@ public class PromotionComputeEngineTest {
 				0);
 	}
 
+	/**
+	 * Test 04 compute with promotions.
+	 */
 	@Test
 	public void test04_compute() {
 
