@@ -1,3 +1,12 @@
+/**
+* This class tests the the total value of the cart 
+* based on various promotions.
+* 
+*
+* @author  Sayan Bhattacharjee
+* @version 1.0.
+* @since   2020-10-03
+*/
 package com.sample.promotionengine.service;
 
 import java.util.HashMap;
@@ -14,14 +23,7 @@ import com.sample.promotionengine.core.Promotion;
 
 import lombok.extern.slf4j.Slf4j;
 
-/**
-* This class test the the total value of the cart based on various promotions.
-* 
-*
-* @author  Sayan Bhattacharjee
-* @version 1.0.
-* @since   2020-10-03
-*/
+
 @Slf4j
 public class PromotionComputeEngine {
 

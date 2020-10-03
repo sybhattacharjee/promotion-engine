@@ -1,3 +1,11 @@
+/**
+* This is a test class used to test the PromotionComputationEngine class.
+* 
+*
+* @author  Sayan Bhattacharjee
+* @version 1.0.
+* @since   2020-10-03
+*/
 package com.sample.promotionengine.service;
 
 import static org.junit.Assert.assertEquals;
@@ -20,14 +28,6 @@ import com.sample.promotionengine.core.Promotion;
 
 import lombok.extern.slf4j.Slf4j;
 
-/**
-* This is a test class used to test the PromotionComputationEngine class.
-* 
-*
-* @author  Sayan Bhattacharjee
-* @version 1.0.
-* @since   2020-10-03
-*/
 @Slf4j
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class PromotionComputeEngineTest {
