@@ -22,7 +22,6 @@ import com.sample.promotionengine.core.Promotion;
 
 import lombok.extern.slf4j.Slf4j;
 
-
 @Slf4j
 public class PromotionComputeEngine {
 
@@ -103,18 +102,23 @@ public class PromotionComputeEngine {
 
 		}
 
+		// Calculate total of items which has combined promotions, like C+D=30
 		if (combinedItemsExists) {
+
+			int noOfUnitsEligibleForPromotion = cartItemsForCombinedPromotion.entrySet().stream()
+					.map(cartItemForCombinedPromotion -> cartItemForCombinedPromotion.getKey().getQuantity()
+							/ cartItemForCombinedPromotion.getValue())
+					.min((x, y) -> Integer.compare(x, y)).get();
 			
-			int noOfUnitsEligibleForPromotion = 0;
-			
+			// Calculate total for units of C and D which couldn't be added to promotion(C+D=30)
 			for (Map.Entry<CartItem, Integer> cartItemForCombinedPromotion : cartItemsForCombinedPromotion.entrySet()) {
-				
-				noOfUnitsEligibleForPromotion = cartItemForCombinedPromotion.getKey().getQuantity()/cartItemForCombinedPromotion.getValue();
-				total += (cartItemForCombinedPromotion.getKey().getQuantity()%cartItemForCombinedPromotion.getValue())
+
+				total += (cartItemForCombinedPromotion.getKey().getQuantity()
+						- noOfUnitsEligibleForPromotion * cartItemForCombinedPromotion.getValue())
 						* cartItemForCombinedPromotion.getKey().getItem().getPrice();
 				cartItems.remove(cartItemForCombinedPromotion.getKey());
 			}
-			
+
 			total += promotionalPrice * noOfUnitsEligibleForPromotion;
 
 			log.debug("Intermediate total after calculating items [{}] with promotion: {}",

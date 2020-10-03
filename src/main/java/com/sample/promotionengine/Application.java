@@ -84,12 +84,12 @@ public class Application {
 				log.info("Item:");
 				String itemStr = scanner.next();
 				if (!ITEMS.contains(itemStr))
-					throw new RuntimeException("No item found with ID: " + itemStr);
+					throw new BusinessException("No item found with ID: " + itemStr);
 
 				Item item = Item.valueOf(itemStr);
 
 				if (itemQuantities.keySet().stream().anyMatch(it -> it == item))
-					throw new RuntimeException("Item [" + itemStr + "] already added for promotion in this iteration");
+					throw new BusinessException("Item [" + itemStr + "] already added for promotion in this iteration");
 
 				if (promotions.stream().map(promotion -> promotion.getItemCombination().keySet())
 						.flatMap(items -> items.stream()).anyMatch(it -> it == item))
