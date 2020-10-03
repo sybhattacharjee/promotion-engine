@@ -1,6 +1,5 @@
 /**
-* This class tests the the total value of the cart 
-* based on various promotions.
+* This class tests the the total value of the cart based on various promotions.
 * 
 *
 * @author  Sayan Bhattacharjee
@@ -105,10 +104,18 @@ public class PromotionComputeEngine {
 		}
 
 		if (combinedItemsExists) {
-			total += promotionalPrice;
+			
+			int noOfUnitsEligibleForPromotion = 0;
+			
 			for (Map.Entry<CartItem, Integer> cartItemForCombinedPromotion : cartItemsForCombinedPromotion.entrySet()) {
+				
+				noOfUnitsEligibleForPromotion = cartItemForCombinedPromotion.getKey().getQuantity()/cartItemForCombinedPromotion.getValue();
+				total += (cartItemForCombinedPromotion.getKey().getQuantity()%cartItemForCombinedPromotion.getValue())
+						* cartItemForCombinedPromotion.getKey().getItem().getPrice();
 				cartItems.remove(cartItemForCombinedPromotion.getKey());
 			}
+			
+			total += promotionalPrice * noOfUnitsEligibleForPromotion;
 
 			log.debug("Intermediate total after calculating items [{}] with promotion: {}",
 					cartItemsForCombinedPromotion.keySet().stream().map(ci -> ci.getItem().name())
