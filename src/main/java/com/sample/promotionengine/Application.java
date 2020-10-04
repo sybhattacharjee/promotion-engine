@@ -50,7 +50,8 @@ public class Application {
 			List<CartItem> cartItems = addCartItems(scanner);
 
 			PromotionComputeEngine promotionComputeEngine = new PromotionComputeEngine();
-			promotionComputeEngine.compute(new ArrayList<>(cartItems), ListUtils.unmodifiableList(promotions));
+			float total = promotionComputeEngine.compute(new ArrayList<>(cartItems), ListUtils.unmodifiableList(promotions));
+			log.info("Total price: {}", total);
 			log.info("Bye");
 		} catch (BusinessException be) {
 			throw be;

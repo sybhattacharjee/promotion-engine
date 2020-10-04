@@ -207,17 +207,17 @@ public class PromotionComputeEngineTest {
 
 		log.info("TC05 - Test case with cart items and combined promotion list");
 
-		// Promotion for Item A
+		// Promotion for Item A,  3A= 130
 		Map<Item, Integer> itemCombinations1 = new HashMap<>(1);
 		itemCombinations1.put(Item.A, 3);
 		Promotion promotion1 = new Promotion(itemCombinations1, 130);
 
-		// Promotion for Item B
+		// Promotion for Item B, 2B = 45
 		Map<Item, Integer> itemCombinations2 = new HashMap<>(1);
 		itemCombinations2.put(Item.B, 2);
 		Promotion promotion2 = new Promotion(itemCombinations2, 45);
 
-		// Combined Promotion for Item C & D
+		// Combined Promotion for Item C & D, 2C+3D = 60
 		Map<Item, Integer> itemCombinations3 = new HashMap<>(2);
 		itemCombinations3.put(Item.C, 2);
 		itemCombinations3.put(Item.D, 3);
@@ -240,7 +240,7 @@ public class PromotionComputeEngineTest {
 		cartItems.add(cartItem3);
 		cartItems.add(cartItem4);
 
-		assertEquals(410,
+		assertEquals(400,
 				promotionComputeEngine.compute(new ArrayList<>(cartItems), ListUtils.unmodifiableList(promotions)), 0);
 
 	}

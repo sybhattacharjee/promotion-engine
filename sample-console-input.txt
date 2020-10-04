@@ -1,0 +1,75 @@
+Sample console input
+====================
+Promotions: 
+1. 3A = 130
+2. 2B = 45
+3. 1C + 1D = 30
+
+Cart items:
+1. 3A
+2. 5B
+3. 1C
+4. 1D
+
+02:13:00.118 [main] INFO com.sample.promotionengine.Application - Enter details of Promotion [1]
+02:13:00.121 [main] INFO com.sample.promotionengine.Application - Enter the number of items associated with this promotion:
+1
+02:13:03.106 [main] INFO com.sample.promotionengine.Application - Item:
+A
+02:13:04.409 [main] INFO com.sample.promotionengine.Application - Quantity:
+3
+02:13:06.044 [main] INFO com.sample.promotionengine.Application - Promotional Price:
+130
+02:13:08.407 [main] INFO com.sample.promotionengine.Application - Enter 'exit' to skip adding promotions, else enter any value to continue adding promotion...
+continue
+02:13:12.681 [main] INFO com.sample.promotionengine.Application - Enter details of Promotion [2]
+02:13:12.681 [main] INFO com.sample.promotionengine.Application - Enter the number of items associated with this promotion:
+1
+02:13:16.004 [main] INFO com.sample.promotionengine.Application - Item:
+B
+02:13:24.137 [main] INFO com.sample.promotionengine.Application - Quantity:
+2
+02:13:37.853 [main] INFO com.sample.promotionengine.Application - Promotional Price:
+45
+02:13:43.286 [main] INFO com.sample.promotionengine.Application - Enter 'exit' to skip adding promotions, else enter any value to continue adding promotion...
+continue
+02:13:49.979 [main] INFO com.sample.promotionengine.Application - Enter details of Promotion [3]
+02:13:49.979 [main] INFO com.sample.promotionengine.Application - Enter the number of items associated with this promotion:
+2
+02:13:55.824 [main] INFO com.sample.promotionengine.Application - Item:
+C
+02:14:00.348 [main] INFO com.sample.promotionengine.Application - Quantity:
+1
+02:14:02.484 [main] INFO com.sample.promotionengine.Application - Item:
+D
+02:14:05.690 [main] INFO com.sample.promotionengine.Application - Quantity:
+1
+02:14:06.716 [main] INFO com.sample.promotionengine.Application - Promotional Price:
+30
+02:14:10.523 [main] INFO com.sample.promotionengine.Application - Enter 'exit' to skip adding promotions, else enter any value to continue adding promotion...
+exit
+02:14:14.088 [main] INFO com.sample.promotionengine.Application - Enter details of Cart
+02:14:14.089 [main] INFO com.sample.promotionengine.Application - Item:
+A
+02:14:21.811 [main] INFO com.sample.promotionengine.Application - Quantity:
+3
+02:14:23.507 [main] INFO com.sample.promotionengine.Application - Enter 'exit' to calculate total price of cart, else enter any value to continue adding items to cart...
+continue
+02:14:26.847 [main] INFO com.sample.promotionengine.Application - Item:
+B
+02:14:32.130 [main] INFO com.sample.promotionengine.Application - Quantity:
+5
+02:14:33.724 [main] INFO com.sample.promotionengine.Application - Enter 'exit' to calculate total price of cart, else enter any value to continue adding items to cart...
+continue
+02:14:47.018 [main] INFO com.sample.promotionengine.Application - Item:
+C
+02:14:51.644 [main] INFO com.sample.promotionengine.Application - Quantity:
+1
+02:14:53.202 [main] INFO com.sample.promotionengine.Application - Enter 'exit' to calculate total price of cart, else enter any value to continue adding items to cart...
+continue
+02:15:01.071 [main] INFO com.sample.promotionengine.Application - Item:
+D
+02:15:04.649 [main] INFO com.sample.promotionengine.Application - Quantity:
+1
+02:15:06.032 [main] INFO com.sample.promotionengine.Application - Enter 'exit' to calculate total price of cart, else enter any value to continue adding items to cart...
+exit
